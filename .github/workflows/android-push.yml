@@ -85,9 +85,16 @@ jobs:
         export ANDROID_NDK=$ANDROID_HOME/ndk/16.1.4479499/
         ./gradlew build -PIJK_CXX_STL=c++_shared
         ./gradlew assembleRelease -PIJK_CXX_STL=c++_shared
+        ./gradlew :fijkplayer-full:assembleRelease
 
     - name: Upload apk
       uses: actions/upload-artifact@v2
       with:
         name: ijkdemo-release
         path: android/ijkplayer/ijkplayer-example/build/outputs/apk/release/ijkplayer-example-release.apk
+
+    - name: Upload aar
+      uses: actions/upload-artifact@v2
+      with:
+        name:  fijkplayer-full-release
+        path: android/ijkplayer/ijkplayer-full/build/outputs/aar/release/fijkplayer-full-release.aar
